@@ -143,7 +143,7 @@ updateBackground();
 setInterval(() => {
     bgIndex = (bgIndex + 1) % backgrounds.length;
     updateBackground();
-}, 4000);
+}, 8000);
 
 
 // ================================
