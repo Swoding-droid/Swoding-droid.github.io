@@ -4,23 +4,20 @@
 // ================================
 
 // Reveal sections as the user scrolls
-document.addEventListener("scroll", () => {
+const sections = document.querySelectorAll(".section");
 
-    const sections = document.querySelectorAll(".section");
-
-    const observer = new scroll(entries => {
-        entries.forEach(section => {
-            if (section.isIntersecting) {
-                section.target.classList.add("visible");
-            }
-        });
-    }, {
-        threshold: 0.2
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+        }
     });
-
-    sections.forEach(section => observer.observe(section));
-
+}, {
+    threshold: 0.2
 });
+
+sections.forEach((section) => revealObserver.observe(section));
 
 
 // ================================
