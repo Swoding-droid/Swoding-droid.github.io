@@ -122,19 +122,26 @@ setTimeout(() => {
 // ================================
 
 const backgrounds = [
-    "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)",
-    "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)",
-    "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)",
-    "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)"
+    { gradient: "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)", hue: "0deg", brightness: "1" },
+    { gradient: "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)", hue: "45deg", brightness: "1.05" },
+    { gradient: "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)", hue: "120deg", brightness: "1.12" },
+    { gradient: "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)", hue: "220deg", brightness: "1.08" }
 ];
 
 let bgIndex = 0;
 
-document.body.style.background = backgrounds[0];
+const updateBackground = () => {
+    const current = backgrounds[bgIndex];
+    document.documentElement.style.setProperty("--bg-gradient", current.gradient);
+    document.documentElement.style.setProperty("--hue-shift", current.hue);
+    document.documentElement.style.setProperty("--brightness", current.brightness);
+};
+
+updateBackground();
 
 setInterval(() => {
     bgIndex = (bgIndex + 1) % backgrounds.length;
-    document.body.style.background = backgrounds[bgIndex];
+    updateBackground();
 }, 9000);
 
 
