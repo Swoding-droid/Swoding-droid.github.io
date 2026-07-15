@@ -7,12 +7,12 @@
 const sections = document.querySelectorAll(".section");
 
 const updateRevealProgress = () => {
+    const viewportHeight = window.innerHeight;
+
     sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-        const startPoint = sectionTop - window.innerHeight * 0.25;
-        const endPoint = sectionTop + section.offsetHeight * 0.35;
-        const range = Math.max(1, endPoint - startPoint);
-        const progress = Math.max(0, Math.min(1, (window.scrollY - startPoint) / range));
+        const rect = section.getBoundingClientRect();
+        const visibleHeight = Math.max(0, Math.min(viewportHeight, viewportHeight - rect.top));
+        const progress = Math.max(0, Math.min(1, visibleHeight / (viewportHeight + section.offsetHeight * 0.4)));
 
         section.style.opacity = progress;
         section.style.transform = `translateY(${(1 - progress) * 80}px)`;
@@ -21,7 +21,7 @@ const updateRevealProgress = () => {
 
 window.addEventListener("scroll", updateRevealProgress, { passive: true });
 window.addEventListener("resize", updateRevealProgress);
-updateRevealProgress();
+requestAnimationFrame(updateRevealProgress);
 
 
 // ================================
