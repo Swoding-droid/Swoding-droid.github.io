@@ -122,10 +122,10 @@ setTimeout(() => {
 // ================================
 
 const backgrounds = [
-    { gradient: "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)", hue: "0deg", brightness: "1" },
-    { gradient: "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)", hue: "45deg", brightness: "1.05" },
-    { gradient: "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)", hue: "120deg", brightness: "1.12" },
-    { gradient: "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)", hue: "220deg", brightness: "1.08" }
+    { gradient: "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)", hue: "0deg", brightness: "1", saturation: "1" },
+    { gradient: "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)", hue: "45deg", brightness: "1.05", saturation: "1.2" },
+    { gradient: "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)", hue: "120deg", brightness: "1.12", saturation: "1.35" },
+    { gradient: "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)", hue: "220deg", brightness: "1.08", saturation: "1.15" }
 ];
 
 let bgIndex = 0;
@@ -135,6 +135,7 @@ const updateBackground = () => {
     document.documentElement.style.setProperty("--bg-gradient", current.gradient);
     document.documentElement.style.setProperty("--hue-shift", current.hue);
     document.documentElement.style.setProperty("--brightness", current.brightness);
+    document.documentElement.style.setProperty("--saturation", current.saturation);
 };
 
 updateBackground();
@@ -142,7 +143,7 @@ updateBackground();
 setInterval(() => {
     bgIndex = (bgIndex + 1) % backgrounds.length;
     updateBackground();
-}, 9000);
+}, 4000);
 
 
 // ================================
