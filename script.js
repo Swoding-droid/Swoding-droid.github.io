@@ -122,25 +122,20 @@ setTimeout(() => {
 // ================================
 
 const backgrounds = [
-    "#008080",
-    "#003399",
-    "#660099",
-    "#006666"
+    "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)",
+    "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)",
+    "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)",
+    "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)"
 ];
 
 let bgIndex = 0;
 
+document.body.style.background = backgrounds[0];
+
 setInterval(() => {
-
+    bgIndex = (bgIndex + 1) % backgrounds.length;
     document.body.style.background = backgrounds[bgIndex];
-
-    bgIndex++;
-
-    if (bgIndex >= backgrounds.length) {
-        bgIndex = 0;
-    }
-
-}, 12000);
+}, 9000);
 
 
 // ================================
