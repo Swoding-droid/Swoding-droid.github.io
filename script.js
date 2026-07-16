@@ -118,20 +118,20 @@ setTimeout(() => {
 
 
 // ================================
-// Random Background Color Shift
+// Gentle Background Gradient Modulation
 // ================================
 
-const backgrounds = [
+const gradients = [
     { gradient: "linear-gradient(135deg, #008080 0%, #00c4cc 50%, #ff7ac6 100%)", hue: "0deg", brightness: "1", saturation: "1" },
-    { gradient: "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)", hue: "45deg", brightness: "1.05", saturation: "1.2" },
-    { gradient: "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)", hue: "120deg", brightness: "1.12", saturation: "1.35" },
-    { gradient: "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)", hue: "220deg", brightness: "1.08", saturation: "1.15" }
+    { gradient: "linear-gradient(135deg, #003399 0%, #4f46e5 50%, #38bdf8 100%)", hue: "20deg", brightness: "1.03", saturation: "1.05" },
+    { gradient: "linear-gradient(135deg, #660099 0%, #8b5cf6 50%, #f472b6 100%)", hue: "40deg", brightness: "1.06", saturation: "1.08" },
+    { gradient: "linear-gradient(135deg, #006666 0%, #14b8a6 50%, #fde68a 100%)", hue: "60deg", brightness: "1.04", saturation: "1.04" }
 ];
 
-let bgIndex = 0;
+let gradientIndex = 0;
 
 const updateBackground = () => {
-    const current = backgrounds[bgIndex];
+    const current = gradients[gradientIndex];
     document.documentElement.style.setProperty("--bg-gradient", current.gradient);
     document.documentElement.style.setProperty("--hue-shift", current.hue);
     document.documentElement.style.setProperty("--brightness", current.brightness);
@@ -141,9 +141,9 @@ const updateBackground = () => {
 updateBackground();
 
 setInterval(() => {
-    bgIndex = (bgIndex + 1) % backgrounds.length;
+    gradientIndex = (gradientIndex + 1) % gradients.length;
     updateBackground();
-}, 8000);
+}, 14000);
 
 
 // ================================
